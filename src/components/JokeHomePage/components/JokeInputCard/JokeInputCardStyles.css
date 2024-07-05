@@ -1,0 +1,52 @@
+.jokeInputCardContainer {
+  width: 95%;
+  height: 10rem;
+  background-color: #e8e8e8;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.jokeInput {
+  width: 65%;
+  height: 70%;
+  background-color: inherit;
+  border: none;
+  border-bottom: solid white 2px;
+  text-align: center;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.jokeInput::placeholder {
+  font-size: 3rem;
+  vertical-align: middle;
+}
+
+.jokeInput:focus {
+  background-color: #f0f0f0;
+}
+
+.jokeInput-leftCornerImg {
+  position: absolute;
+  width: 10rem;
+  left: 0%;
+}
+
+.jokeInput-rightCornerImg {
+  transform: rotate(180deg);
+  position: absolute;
+  width: 10rem;
+  right: 0%;
+}
+
+.postJokeIcon {
+  height: 2rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.postJokeIcon:hover {
+  background-color: rgb(4, 94, 212);
+}

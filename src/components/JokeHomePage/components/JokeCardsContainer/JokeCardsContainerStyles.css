@@ -1,0 +1,29 @@
+.JokeCardsContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 7rem;
+}
+
+.cardsWrapper {
+  width: 50%;
+  height: 80%;
+  overflow-y: scroll;
+}
+
+/* width */
+.cardsWrapper::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+.cardsWrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.cardsWrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 30px;
+}

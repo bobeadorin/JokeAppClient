@@ -1,0 +1,62 @@
+.sideBarContainer {
+  height: 100vh;
+  width: 20rem;
+  background-color: #21211e;
+  position: absolute;
+  transition: 0.2s ease-out;
+}
+
+.topCategoryOptions-container {
+  height: 3rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 5px solid white;
+  user-select: none;
+  transition: none;
+}
+
+.mostPopularAndAllJokes-wrapper {
+  height: 90%;
+}
+
+.categoryIconSize {
+  height: 90%;
+}
+
+.categoryCards-container {
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  user-select: none;
+  transition: 0.2s ease;
+}
+.collapseSidebarBtn {
+  position: absolute;
+  top: 45%;
+  left: 100%;
+  transform: translateY(-50%);
+  height: 4.2rem;
+  cursor: pointer;
+}
+
+.closedSideBarContainer {
+  height: 100vh;
+  width: 7rem;
+  background-color: #21211e;
+  position: absolute;
+
+  transition: 0.2s ease-out;
+}
+
+.isClosed {
+  display: none;
+}
+
+.mostPopularAndAllJokes-wrapper-Closed > img {
+  width: 60%;
+  margin: 0.2rem;
+  margin-left: 1rem;
+}
