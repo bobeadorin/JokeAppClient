@@ -27,6 +27,7 @@ export default function JokeNavbar() {
           src="\jokeHomePageImages\jokeNavbarImgs\profileLogoNavbar.png"
           alt=""
           className="profileLogo navbarItems"
+          onClick={() => navigate("/jokes/profile")}
         />
       </div>
     </div>

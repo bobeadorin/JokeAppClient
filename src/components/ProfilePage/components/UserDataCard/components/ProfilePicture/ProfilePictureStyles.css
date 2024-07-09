@@ -1,0 +1,35 @@
+.followProfileIcon-container {
+  text-align: right;
+}
+.followProfileIcon {
+  height: 3.5rem;
+  text-align: right;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.profileImg {
+  width: 12em;
+  border-radius: 50%;
+  border: 17px solid white;
+}
+
+.profilePicture-container {
+  text-align: center;
+}
+
+.UserNameAndStatusContainer {
+  background-color: rgb(255, 255, 255, 0.5);
+
+  text-align: center;
+}
+
+.UserNameAndStatusContainer > h2 {
+  font-size: 2.3rem;
+}
+
+.UserNameAndStatusContainer > p {
+  color: #da2619;
+  font-size: 1.2rem;
+  font-weight: 900;
+}

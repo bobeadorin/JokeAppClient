@@ -1,0 +1,8 @@
+.userProfileDataCardContainer {
+  background-color: #38b6ff;
+  width: 25rem;
+  height: 100%;
+  background-image: url("\\profilePageImgs\\UserCardBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

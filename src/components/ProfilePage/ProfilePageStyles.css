@@ -1,0 +1,16 @@
+.profilePage-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url("\\profilePageImgs\\profilePageBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilePage-section {
+  width: 90%;
+  height: 95%;
+}
