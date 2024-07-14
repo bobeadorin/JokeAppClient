@@ -46,8 +46,8 @@ export default function SideBar() {
       <img
         src={
           isOpen
-            ? "public\\jokeHomePageImages\\jokeSideBarIcons\\collapseSidebarBtnIcon.gif"
-            : "public\\jokeHomePageImages\\jokeSideBarIcons\\extendSidebarBtnIcon.gif"
+            ? "\\jokeHomePageImages\\jokeSideBarIcons\\collapseSidebarBtnIcon.gif"
+            : "\\jokeHomePageImages\\jokeSideBarIcons\\extendSidebarBtnIcon.gif"
         }
         alt="sdf"
         className="collapseSidebarBtn"

@@ -20,8 +20,9 @@ export default function JokeCard({ jokeConfig }) {
         setCardAssets(jokeCardData.cat);
         console.log(cardAssets);
         break;
-      case "proggraming":
-        setCardAssets(jokeCardData.proggraming);
+      case "programming":
+        setCardAssets(jokeCardData.programming);
+        console.log(cardAssets);
         break;
       case "dirty":
         setCardAssets(jokeCardData.dirty);
@@ -53,7 +54,7 @@ export default function JokeCard({ jokeConfig }) {
       <div>
         <div className="jokeText">
           <p className="firstJokePart">
-            Why did the proggramer wanted glasses?
+            Why did the programmer wanted glasses?
           </p>
           <p className="jokePunchLine">So he can C#!</p>
         </div>

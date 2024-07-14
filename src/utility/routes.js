@@ -7,7 +7,7 @@ export const categoryCardRoutes = [
   {
     route:
       "\\jokeHomePageImages\\jokeSideBarIcons\\jokeCategoryIcons\\programmingJokesIcon.png",
-    name: "Proggraming",
+    name: "Programming",
   },
   {
     route:
@@ -38,8 +38,8 @@ export const jokeCardData = {
       "\\jokeHomePageImages\\jokeCardsImgs\\jokeCardsCategoryBackgrounds\\catJokeCardBg.png",
     bgColor: "#FFE1AF",
   },
-  proggraming: {
-    type: "proggraming",
+  programming: {
+    type: "programming",
     categoryBubblePath:
       "\\jokeHomePageImages\\jokeSideBarIcons\\jokeCategoryIcons\\programmingJokesIcon.png",
     categoryTopLogoPath:
@@ -73,7 +73,7 @@ export const jokeCardData = {
     categoryBubblePath:
       "\\jokeHomePageImages\\jokeSideBarIcons\\jokeCategoryIcons\\knockJokesIcon.png",
     categoryTopLogoPath:
-      "public\\jokeHomePageImages\\jokeCardsImgs\\jokeCardsCategoryTopIcons\\KnockIcon.png",
+      "\\jokeHomePageImages\\jokeCardsImgs\\jokeCardsCategoryTopIcons\\KnockIcon.png",
     categoryBgPath:
       "\\jokeHomePageImages\\jokeCardsImgs\\jokeCardsCategoryBackgrounds\\knockJokeCardBg.png",
     bgColor: "#3C2415",

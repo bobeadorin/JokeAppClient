@@ -3,7 +3,7 @@ import JokeCard from "../JokeCard/JokeCard";
 import JokeInputCard from "../JokeInputCard/JokeInputCard";
 
 export default function JokeCardsContainer() {
-  const arr = ["cat", "horror", "dirty", "proggraming", "knock"];
+  const arr = ["cat", "horror", "dirty", "programming", "knock"];
   return (
     <section className="JokeCardsContainer">
       <div className="cardsWrapper">

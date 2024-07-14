@@ -1,0 +1,27 @@
+.storeProfileCard-wrapper {
+  width: 80%;
+  height: 100%;
+  background-color: #38b6ff;
+  margin-left: 2rem;
+  background-image: url("\\profilePageImgs\\ShopHistoryProfileContainerBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.topHeaderStore {
+  width: 100%;
+  height: 2.5rem;
+  background-color: #95e1e6;
+
+  text-align: center;
+  position: relative;
+}
+
+.topHeaderStore > h1 {
+  font-size: 3.4rem;
+}
+.profileCategoryStore {
+  width: 6rem;
+  position: absolute;
+  top: 20%;
+  left: 1%;
+}

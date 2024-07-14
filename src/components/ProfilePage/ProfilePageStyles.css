@@ -13,4 +13,53 @@
 .profilePage-section {
   width: 90%;
   height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionSelector {
+  width: 5%;
+  height: 100%;
+  border-left: 2px solid black;
+}
+.jokeSelector {
+  width: 100%;
+  height: 50%;
+  background-color: #8c52ff;
+  border-radius: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.shopSelector {
+  width: 100%;
+  height: 50%;
+  background-color: #95e1e6;
+  border-radius: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.shopSelector:hover {
+  background-color: #94f3fa;
+  transition: 0.3s ease;
+}
+
+.jokeSelector:hover {
+  background-color: rgb(143, 108, 212);
+
+  transition: 0.3s ease;
+}
+
+.JokeLogoSelector {
+  width: 130%;
+  transform: rotate(90deg);
+}
+.ShopLogoSelector {
+  width: 100%;
+  transform: rotate(90deg);
 }

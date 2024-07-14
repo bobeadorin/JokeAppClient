@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  BrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import RegisterPage from "./components/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./components/LogInPage/LogInPage.jsx";
@@ -21,13 +15,26 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/register" element={<RegisterPage />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route
+          exact
+          path="/jokes"
+          element={
+            <Layout>
+              <JokeHomePage />{" "}
+            </Layout>
+          }
+        />
+        <Route
+          exact
+          path="/jokes/profile"
+          element={
+            <Layout>
+              <ProfilePage />
+            </Layout>
+          }
+        />
       </Routes>
-      <Layout>
-        <Routes>
-          <Route exact path="/jokes" element={<JokeHomePage />} />
-          <Route exact path="/jokes/profile" element={<ProfilePage />} />
-        </Routes>
-      </Layout>
     </BrowserRouter>
   </React.StrictMode>
 );

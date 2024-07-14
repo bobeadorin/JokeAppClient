@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="shopSidePannel">
         <img
           className="shopSideRoof"
-          src="public\homePageImages\shopSideRoof.png"
+          src="\homePageImages\shopSideRoof.png"
           alt=""
         />
         <img
