@@ -6,11 +6,13 @@ export default function JokeCardsContainer() {
   const arr = ["cat", "horror", "dirty", "programming", "knock"];
   return (
     <section className="JokeCardsContainer">
-      <div className="cardsWrapper">
-        <JokeInputCard />
-        {arr.map((element) => (
-          <JokeCard jokeConfig={{ type: element }} />
-        ))}
+      <div className="JokeCardsBgContainer">
+        <div className="cardsWrapper">
+          <JokeInputCard />
+          {arr.map((element) => (
+            <JokeCard jokeConfig={{ type: element, size: "default" }} />
+          ))}
+        </div>
       </div>
     </section>
   );

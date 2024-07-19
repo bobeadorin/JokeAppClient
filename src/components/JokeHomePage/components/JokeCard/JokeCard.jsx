@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import { jokeCardData, userActionsImgPaths } from "../../../../utility/routes";
+import {
+  smallScaleCardStyles,
+  largeScaleCardStyles,
+  defaultCardStyles,
+} from "../../../../utility/jokeCardCustomStyles";
+
 import "./JokeCardStyles.css";
 
 export default function JokeCard({ jokeConfig }) {
   const [cardAssets, setCardAssets] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [cardStyles, setCardStyles] = useState(defaultCardStyles);
 
   const handleLikeOnClick = () => {
     setIsLiked(!isLiked);
@@ -18,11 +25,9 @@ export default function JokeCard({ jokeConfig }) {
     switch (jokeConfig.type) {
       case "cat":
         setCardAssets(jokeCardData.cat);
-        console.log(cardAssets);
         break;
       case "programming":
         setCardAssets(jokeCardData.programming);
-        console.log(cardAssets);
         break;
       case "dirty":
         setCardAssets(jokeCardData.dirty);
@@ -36,32 +41,51 @@ export default function JokeCard({ jokeConfig }) {
     }
   }, []);
 
+  useEffect(() => {
+    switch (jokeConfig.size) {
+      case "S":
+        setCardStyles(smallScaleCardStyles);
+        break;
+      case "L":
+        setCardStyles(largeScaleCardStyles);
+        console.log(cardStyles);
+        break;
+      default:
+        setCardStyles(defaultCardStyles);
+        break;
+    }
+  }, []);
+
   return (
-    <section className="jokeCard-container">
-      <div className="jokeTopSideContainer">
+    <section className={cardStyles.jokeCardContainer}>
+      <div className={cardStyles.jokeTopSideContainer}>
         <img
-          className="jokeCardTopIcon"
+          className={cardStyles.jokeCardTopIcon}
           src={cardAssets.categoryTopLogoPath}
           alt=""
         />
         <img
-          className="jokeCardCategoryBubble"
+          className={cardStyles.jokeCardCategoryBubble}
           src={cardAssets.categoryBubblePath}
           alt=""
         />
-        <img className="jokeCardBg" src={cardAssets.categoryBgPath} alt="" />
+        <img
+          className={cardStyles.jokeCardBg}
+          src={cardAssets.categoryBgPath}
+          alt=""
+        />
       </div>
       <div>
-        <div className="jokeText">
-          <p className="firstJokePart">
+        <div className={cardStyles.jokeText}>
+          <p className={cardStyles.firstJokePart}>
             Why did the programmer wanted glasses?
           </p>
-          <p className="jokePunchLine">So he can C#!</p>
+          <p className={cardStyles.jokePunchLine}>So he can C#!</p>
         </div>
       </div>
       <div
         style={{ backgroundColor: `${cardAssets.bgColor}` }}
-        className="jokeCardUserAction-container"
+        className={cardStyles.jokeCardUserActionContainer}
       >
         <img
           src={
@@ -71,7 +95,7 @@ export default function JokeCard({ jokeConfig }) {
           }
           alt=""
           onClick={() => handleFavoriteOnClick()}
-          className="favoriteIcon"
+          className={cardStyles.favoriteIcon}
         />
         <img
           src={
@@ -81,7 +105,7 @@ export default function JokeCard({ jokeConfig }) {
           }
           alt=""
           onClick={() => handleLikeOnClick()}
-          className="likeIcon"
+          className={cardStyles.likeIcon}
         />
       </div>
     </section>

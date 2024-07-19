@@ -7,9 +7,21 @@
   margin-left: 7rem;
 }
 
+.JokeCardsBgContainer {
+  width: 60%;
+  height: 100%;
+  background-image: url("\\jokeHomePageImages\\JokeCardsWrapperBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cardsWrapper {
-  width: 50%;
-  height: 80%;
+  width: 70%;
+  height: 90%;
+  margin-bottom: 10%;
   overflow-y: scroll;
 }
 
@@ -19,7 +31,7 @@
 }
 /* Track */
 .cardsWrapper::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: none;
 }
 
 /* Handle */

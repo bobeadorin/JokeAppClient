@@ -11,7 +11,7 @@
 .jokesSidePannel {
   /* background: linear-gradient(90deg, #ff3131, #ff914d); */
   background-color: #f74712;
-  background-image: url("public\\homePageImages\\jokeUnderlay.png");
+  background-image: url("\\homePageImages\\jokeUnderlay.png");
   background-size: 120% 100%;
   background-repeat: no-repeat;
   width: 50%;
@@ -24,7 +24,7 @@
 
 .shopSidePannel {
   background-color: #8c52ff;
-  background-image: url("public\\homePageImages\\shopUnderlay.png");
+  background-image: url("\\homePageImages\\shopUnderlay.png");
   background-size: 124% 110%;
   background-repeat: no-repeat;
   width: 50%;
