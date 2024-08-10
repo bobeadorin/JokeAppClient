@@ -1,5 +1,6 @@
 import "./RegisterPageStyles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useRegistration from "../../utility/hooks/useRegistration";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -12,10 +13,43 @@ export default function RegisterPage() {
   const [currency, setCurrency] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [isRegistered, error, setRegistrationData] = useRegistration();
 
   const handleSubmitEvent = (e) => {
     e.preventDefault();
+    setRegistrationData({
+      Email: email,
+      Password: password,
+      Username: username,
+      FirstName: firstName,
+      LastName: lastName,
+      Country: country,
+      Currency: currency,
+      PhoneNumber: phoneNumber,
+      Address: address,
+    });
+    clearInputState();
   };
+
+  const clearInputState = () => {
+    setEmail("");
+    setPassword("");
+    setRepeatPassword("");
+    setUsername("");
+    setFirstName("");
+    setLastName("");
+    setAddress("");
+    setCountry("");
+    setCurrency("");
+    setPhoneNumber("");
+  };
+
+  useEffect(() => {
+    console.log(isRegistered);
+    if (isRegistered === true) {
+      alert("merge");
+    }
+  }, [isRegistered]);
 
   return (
     <section className="register-page">
