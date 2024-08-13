@@ -30,6 +30,12 @@ export default class UtilityValidate {
     return false;
   }
 
+  static ValidateUsername(username) {
+    if (username !== null && username.length > 5) return true;
+
+    return false;
+  }
+
   static ValidatePassword(password) {
     const validateInstance = new UtilityValidate();
     if (

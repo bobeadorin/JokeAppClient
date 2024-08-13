@@ -1,9 +1,9 @@
 import UtilityValidate from "./utilityValidate";
 
 export default class Validate {
-  static ValidateAccount(email, password) {
+  static ValidateAccount(username, password) {
     if (
-      UtilityValidate.ValidateEmail(email) &&
+      UtilityValidate.ValidateUsername(username) &&
       UtilityValidate.ValidatePassword(password)
     )
       return true;

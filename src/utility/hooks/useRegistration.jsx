@@ -9,16 +9,15 @@ export default function useRegistration() {
   useEffect(() => {
     if (registrationData === null) return;
     else {
-      console.log(registrationData);
       postRegistrationData();
     }
   }, [registrationData]);
 
   const postRegistrationData = async () => {
     try {
-      data = await api.post("/register", registrationData);
-      res = await data.json();
-      setIsRegistered(res.data.Succes);
+      res = await api.post("/register", registrationData);
+
+      setIsRegistered(await res.data.Succes);
     } catch (error) {
       setError(error);
       setIsRegistered(false);

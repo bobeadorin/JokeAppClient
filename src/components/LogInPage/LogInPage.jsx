@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Validate from "../../utility/validateFields";
+import useLogin from "../../utility/hooks/useLogin";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [data, error, setLoginFormData] = useLogin();
 
   const handleSubmitEvent = (e) => {
     e.preventDefault();
-    if (Validate.ValidateAccount(email, password)) {
-      alert("it's okay");
-      setEmail("");
+    if (Validate.ValidateAccount(username, password)) {
+      setLoginFormData({ Username: username, Password: password });
+      setUsername("");
       setPassword("");
-    } else return;
+    } else alert("something is not okay");
   };
 
   return (
@@ -21,10 +23,10 @@ export default function LoginPage() {
         <hr className="text-underline" />
         <div className="register-form-account-data">
           <input
-            type="email"
-            value={email}
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="password"
