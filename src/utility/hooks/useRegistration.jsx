@@ -15,9 +15,9 @@ export default function useRegistration() {
 
   const postRegistrationData = async () => {
     try {
-      res = await api.post("/register", registrationData);
+      const res = await api.post("/register", registrationData);
 
-      setIsRegistered(await res.data.Succes);
+      setIsRegistered(res.data.Succes);
     } catch (error) {
       setError(error);
       setIsRegistered(false);
