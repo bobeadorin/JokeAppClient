@@ -10,7 +10,7 @@ export default function JokeNavbar() {
         src="\jokeHomePageImages\jokeNavbarImgs\jokeLogoNavbar.png"
         alt="jokeLogo"
         className="jokeNavbarLogo navbarItems"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/jokes")}
       />
       <img
         src="\jokeHomePageImages\jokeNavbarImgs\middleLogoNavbar.png"

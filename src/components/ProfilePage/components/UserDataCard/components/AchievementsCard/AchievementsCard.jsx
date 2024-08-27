@@ -1,6 +1,10 @@
 import "./AchievementsCardStyles.css";
+import { useContext } from "react";
+import UserDataContext from "../../../../../../utility/userContext/userContext";
 
 export default function AchievementsCard() {
+  const userData = useContext(UserDataContext);
+
   return (
     <section className="AchievementsCardContainer">
       <div className="AchievementsCard-wrapper">
@@ -15,7 +19,9 @@ export default function AchievementsCard() {
               src="\profilePageImgs\LikesIcon.png"
               alt=""
             />
-            <p className="userAssets_values">12</p>
+            <p className="userAssets_values">
+              {userData !== null ? userData.likes : "nu merge"}
+            </p>
           </div>
           <div className="userAssets">
             <img
@@ -23,7 +29,9 @@ export default function AchievementsCard() {
               src="\profilePageImgs\FollowersIcon.png"
               alt=""
             />
-            <p className="userAssets_values">23</p>
+            <p className="userAssets_values">
+              {userData !== null ? userData.followersNumber : "nu merge"}
+            </p>
           </div>
           <div className="userAssets">
             <img
@@ -31,7 +39,9 @@ export default function AchievementsCard() {
               src="\profilePageImgs\PostsIcon.png"
               alt=""
             />
-            <p className="userAssets_values">23</p>
+            <p className="userAssets_values">
+              {userData !== null ? userData.postsNumber : "nu merge"}
+            </p>
           </div>
         </div>
       </div>

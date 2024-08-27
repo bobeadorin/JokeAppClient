@@ -1,5 +1,6 @@
 .jokeProfileCard-wrapper {
   max-width: 75%;
+  min-width: 75%;
   height: 100%;
   background-color: #38b6ff;
   margin-left: 2rem;
@@ -28,55 +29,28 @@
   top: 0%;
   left: 0%;
 }
-.ProfileJokeCarouselContainer {
-  width: 100%;
-  height: 100%;
-  margin-top: 5%;
-}
 
-.ProfileJokeCarousel {
+.spotlightCard-container {
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  overflow-x: scroll;
-  gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  scroll-behavior: smooth;
 }
 
-.ProfileJokeCarousel::-webkit-scrollbar {
-  display: none;
-}
-.spotlightJokeContainer {
+.JokeCarouselAndSpotlightCard-container {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.ProfileJokeCarouselWrapper {
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 15rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.rightArrow-Spotlight {
+  width: 5rem;
+  transform: rotate(180deg);
 }
 
-.rightArrow {
-  position: absolute;
-  right: 0%;
-  z-index: 1;
-  height: 100%;
-  top: 0%;
+.leftArrow-Spotlight {
+  width: 5rem;
 }
-.leftArrow {
-  position: absolute;
-  left: 0%;
-  z-index: 1;
-  height: 100%;
-  top: 0%;
+
+.spotlightArrow:hover {
+  filter: invert();
+  cursor: pointer;
 }

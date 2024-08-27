@@ -1,11 +1,18 @@
 .followProfileIcon-container {
   text-align: right;
+  height: 4rem;
+  cursor: pointer;
 }
+
+.followProfileIcon:hover {
+  filter: brightness(0.8);
+}
+
 .followProfileIcon {
-  height: 3.5rem;
+  height: 3rem;
   text-align: right;
-  margin-right: 2rem;
-  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
 }
 
 .profileImg {
@@ -32,4 +39,17 @@
   color: #da2619;
   font-size: 1.2rem;
   font-weight: 900;
+}
+
+.followedProfileIcon {
+  height: 2.2rem;
+  text-align: right;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  border: 6px solid white;
+  border-radius: 50%;
+}
+
+.followedProfileIcon:hover {
+  filter: brightness(0.8);
 }

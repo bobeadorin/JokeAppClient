@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Validate from "../../utility/validateFields";
 import useLogin from "../../utility/hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [data, error, setLoginFormData] = useLogin();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data) {
+      navigate("/");
+    }
+  });
 
   const handleSubmitEvent = (e) => {
     e.preventDefault();
@@ -15,6 +23,10 @@ export default function LoginPage() {
       setPassword("");
     } else alert("something is not okay");
   };
+
+  if (error) {
+    alert(error);
+  }
 
   return (
     <section className="register-page">

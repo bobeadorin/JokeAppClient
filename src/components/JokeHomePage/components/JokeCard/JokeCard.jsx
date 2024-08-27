@@ -13,6 +13,7 @@ export default function JokeCard({ jokeConfig }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
+  const [jokeData, setJokeData] = useState();
 
   const handleLikeOnClick = () => {
     setIsLiked(!isLiked);
@@ -22,11 +23,12 @@ export default function JokeCard({ jokeConfig }) {
   };
 
   useEffect(() => {
-    switch (jokeConfig.type) {
+    console.log(jokeConfig, "asdas");
+    switch (jokeConfig.type.category) {
       case "cat":
         setCardAssets(jokeCardData.cat);
         break;
-      case "programming":
+      case "Programming":
         setCardAssets(jokeCardData.programming);
         break;
       case "dirty":
@@ -48,7 +50,6 @@ export default function JokeCard({ jokeConfig }) {
         break;
       case "L":
         setCardStyles(largeScaleCardStyles);
-        console.log(cardStyles);
         break;
       default:
         setCardStyles(defaultCardStyles);
@@ -77,10 +78,8 @@ export default function JokeCard({ jokeConfig }) {
       </div>
       <div>
         <div className={cardStyles.jokeText}>
-          <p className={cardStyles.firstJokePart}>
-            Why did the programmer wanted glasses?
-          </p>
-          <p className={cardStyles.jokePunchLine}>So he can C#!</p>
+          <p className={cardStyles.firstJokePart}>{jokeConfig.type.text}</p>
+          {/* <p className={cardStyles.jokePunchLine}>{jokeConfig.type.text}</p> */}
         </div>
       </div>
       <div

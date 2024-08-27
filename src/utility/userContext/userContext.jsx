@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const userDataContext = createContext({ loading: false, data: {} });
+const UserDataContext = createContext();
 
-export default userDataContext;
+export default UserDataContext;

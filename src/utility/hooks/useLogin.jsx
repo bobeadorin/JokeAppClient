@@ -13,10 +13,14 @@ export default function useLogin() {
 
   const postLoginDataRequest = async () => {
     try {
-      const res = await api.post("/login", {
-        Username: loginFormData.Username,
-        Password: loginFormData.Password,
-      });
+      const res = await api.post(
+        "/login",
+        {
+          Username: loginFormData.Username,
+          Password: loginFormData.Password,
+        },
+        { withCredentials: true }
+      );
       console.log(res);
 
       setData(res.data);
