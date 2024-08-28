@@ -29,14 +29,16 @@
 
 .jokeInput-leftCornerImg {
   position: absolute;
-  width: 10rem;
+  height: 100%;
   left: 0%;
 }
 
 .jokeInput-rightCornerImg {
   transform: rotate(180deg);
   position: absolute;
-  width: 10rem;
+
+  height: 100%;
+
   right: 0%;
 }
 

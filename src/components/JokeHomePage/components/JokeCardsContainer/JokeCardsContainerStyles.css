@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  scroll-behavior: smooth;
   margin-left: 7rem;
 }
 
@@ -16,24 +17,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .cardsWrapper {
+  margin-top: 2rem;
   width: 70%;
   height: 90%;
   margin-bottom: 10%;
   overflow-y: scroll;
-  animation: fadeOut 0.3s forwards;
-  animation-timeline: scroll();
-}
-
-@keyframes fadeOut {
-  from {
-    filter: blur(0);
-  }
-  to {
-    filter: blur(1rem);
-  }
 }
 
 /* width */

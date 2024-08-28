@@ -26,8 +26,8 @@ export default function JokeCardsContainer() {
   return (
     <section className="JokeCardsContainer">
       <div className="JokeCardsBgContainer">
+        <JokeInputCard />
         <div className="cardsWrapper">
-          <JokeInputCard />
           {jokes.map((element) => (
             <JokeCard jokeConfig={{ type: element, size: "default" }} />
           ))}
