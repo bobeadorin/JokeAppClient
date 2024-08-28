@@ -21,7 +21,11 @@ export default function LoginPage() {
       setLoginFormData({ Username: username, Password: password });
       setUsername("");
       setPassword("");
-    } else alert("something is not okay");
+    } else {
+      setUsername("");
+      setPassword("");
+      alert("something is not okay");
+    }
   };
 
   if (error) {

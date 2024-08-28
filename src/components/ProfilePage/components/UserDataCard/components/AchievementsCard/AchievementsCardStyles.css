@@ -22,10 +22,10 @@
 
 .achievementsIconsContainer {
   height: 60%;
-  background-color: #f5c4a9;
-  background-image: url("\\profilePageImgs\\AchievementsCardBg.png");
+  background-color: #f4d281;
+  /* background-image: url("\\profilePageImgs\\AchievementsCardBg.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .AchievementsCard-wrapper {

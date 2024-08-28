@@ -26,8 +26,7 @@
 }
 
 .UserNameAndStatusContainer {
-  background-color: rgb(255, 255, 255, 0.5);
-
+  background-color: rgb(255, 255, 255, 0.8);
   text-align: center;
 }
 
@@ -36,7 +35,7 @@
 }
 
 .UserNameAndStatusContainer > p {
-  color: #da2619;
+  color: #434da5;
   font-size: 1.2rem;
   font-weight: 900;
 }

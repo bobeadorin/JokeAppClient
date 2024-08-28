@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import "./ProfilePictureStyles.css";
 import UserDataContext from "../../../../../../utility/userContext/userContext";
 
