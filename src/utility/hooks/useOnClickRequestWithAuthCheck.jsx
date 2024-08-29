@@ -1,19 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import api from "../axiosConfig/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
-export default function useRequestWithAuthCheck(requestCallback) {
+export default function useOnClickRequestWithAuthCheck(
+  requestCallback,
+  params = null
+) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleRequest = async () => {
-      try {
-        await makeOriginalRequest();
-      } catch (err) {
-        console.log("First request failed, attempting refresh...");
+  const handleRequest = async () => {
+    setIsLoading(true);
+    try {
+      await makeOriginalRequest();
+    } catch (err) {
+      console.log("First request failed, attempting refresh...");
+      console.log(err);
+      if (err.response.status === 401) {
         const refreshSuccessful = await refreshToken();
         if (refreshSuccessful) {
           try {
@@ -27,18 +32,19 @@ export default function useRequestWithAuthCheck(requestCallback) {
           console.log("Refresh token failed, logging out...");
           await logout();
         }
-      } finally {
-        setIsLoading(false);
       }
-    };
-
-    handleRequest();
-  }, []);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const makeOriginalRequest = async () => {
     setIsLoading(true);
     try {
-      const originalRequest = await requestCallback();
+      const originalRequest =
+        params != null
+          ? await requestCallback(params)
+          : await requestCallback();
       setData(originalRequest);
       setError(false);
     } catch (err) {
@@ -75,5 +81,5 @@ export default function useRequestWithAuthCheck(requestCallback) {
     }
   };
 
-  return { data, isLoading };
+  return { data, isLoading, handleRequest };
 }

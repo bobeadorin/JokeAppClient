@@ -29,7 +29,10 @@ export default function JokeCardsContainer() {
         <JokeInputCard />
         <div className="cardsWrapper">
           {jokes.map((element) => (
-            <JokeCard jokeConfig={{ type: element, size: "default" }} />
+            <JokeCard
+              key={element.id}
+              jokeConfig={{ type: element, size: "default" }}
+            />
           ))}
         </div>
       </div>

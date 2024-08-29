@@ -13,24 +13,23 @@ export default function LoginPage() {
     if (data) {
       navigate("/");
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+    }
+  }, [error]);
 
   const handleSubmitEvent = (e) => {
     e.preventDefault();
     if (Validate.ValidateAccount(username, password)) {
       setLoginFormData({ Username: username, Password: password });
-      setUsername("");
-      setPassword("");
     } else {
-      setUsername("");
-      setPassword("");
-      alert("something is not okay");
+      alert("Something is not okay");
     }
   };
-
-  if (error) {
-    alert(error);
-  }
 
   return (
     <section className="register-page">
@@ -53,7 +52,7 @@ export default function LoginPage() {
         </div>
 
         <button className="register-form-submit-btn" type="submit">
-          Log In !
+          Log In!
         </button>
       </form>
     </section>

@@ -1,21 +1,26 @@
 .jokeInputCardContainer {
-  width: 95%;
-  height: 10rem;
-  background-color: #e8e8e8;
+  width: 75%;
+  height: 15rem;
+  background-color: #f1dfb8;
   margin-bottom: 1rem;
   position: relative;
   text-align: center;
+  border-radius: 0 0 30px 30px;
 }
-
+.jokeInputCardContainer > div {
+  position: relative;
+  width: 100%;
+}
 .jokeInput {
-  width: 65%;
-  height: 70%;
-  background-color: inherit;
+  width: 75%;
+  height: 75%;
+  background-color: #fdfdfd;
   border: none;
   border-bottom: solid white 2px;
   text-align: center;
   font-size: 1.5rem;
   outline: none;
+  border-radius: 0 0 10px 10px;
 }
 
 .jokeInput::placeholder {
@@ -27,21 +32,6 @@
   background-color: #f0f0f0;
 }
 
-.jokeInput-leftCornerImg {
-  position: absolute;
-  height: 100%;
-  left: 0%;
-}
-
-.jokeInput-rightCornerImg {
-  transform: rotate(180deg);
-  position: absolute;
-
-  height: 100%;
-
-  right: 0%;
-}
-
 .postJokeIcon {
   height: 2rem;
   margin-top: 0.5rem;
@@ -51,4 +41,57 @@
 
 .postJokeIcon:hover {
   background-color: rgb(4, 94, 212);
+}
+
+.dropbtn {
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  font-size: 10px;
+  min-width: rem;
+  border: none;
+  border-radius: 20px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  position: absolute;
+  right: 5%;
+  min-width: 3rem;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }

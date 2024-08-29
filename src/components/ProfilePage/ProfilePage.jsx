@@ -2,7 +2,7 @@ import "./ProfilePageStyles.css";
 import UserDataCard from "./components/UserDataCard/UserDataCard";
 import JokeProfileCard from "./components/JokeProfileCard/JokeProfileCard";
 import StoreProfileCard from "./components/StoreCard/StoreProfileCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserDataContext from "../../utility/userContext/userContext";
 import useRequestWithAuthCheck from "../../utility/hooks/useRequestWithAuthCheck";
 import api from "../../utility/axiosConfig/axiosConfig";
