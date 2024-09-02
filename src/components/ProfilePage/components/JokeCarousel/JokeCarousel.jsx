@@ -54,8 +54,9 @@ export default function JokeCarousel() {
 
   return (
     <div className="carouselContainer">
-      {mockCardArray.map((card) => (
+      {mockCardArray.map((card, index) => (
         <JokeCard
+          key={index}
           jokeConfig={{
             type: card.type,
             size: card.size,

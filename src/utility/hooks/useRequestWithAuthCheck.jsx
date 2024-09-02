@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../axiosConfig/axiosConfig";
-import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext/authContext";
 
-export default function useRequestWithAuthCheck(requestCallback) {
+export default function useRequestWithAuthCheck(
+  requestCallback,
+  params = null
+) {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorData, setErrorData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     const handleRequest = async () => {
@@ -14,18 +18,21 @@ export default function useRequestWithAuthCheck(requestCallback) {
         await makeOriginalRequest();
       } catch (err) {
         console.log("First request failed, attempting refresh...");
-        const refreshSuccessful = await refreshToken();
-        if (refreshSuccessful) {
-          try {
-            console.log("Making the request again after refresh...");
-            await makeOriginalRequest();
-          } catch (err) {
-            console.log("Request failed again after refresh, logging out...");
+        if (err.response.status === 401) {
+          const refreshSuccessful = await refreshToken();
+          if (refreshSuccessful) {
+            try {
+              console.log("Making the request again after refresh...");
+              setIsLoggedIn(true);
+              await makeOriginalRequest();
+            } catch (err) {
+              console.log("Request failed again after refresh, logging out...");
+              await logout();
+            }
+          } else {
+            console.log("Refresh token failed, logging out...");
             await logout();
           }
-        } else {
-          console.log("Refresh token failed, logging out...");
-          await logout();
         }
       } finally {
         setIsLoading(false);
@@ -38,11 +45,15 @@ export default function useRequestWithAuthCheck(requestCallback) {
   const makeOriginalRequest = async () => {
     setIsLoading(true);
     try {
-      const originalRequest = await requestCallback();
+      const originalRequest =
+        params == null
+          ? await requestCallback()
+          : await requestCallback(params);
       setData(originalRequest);
-      setError(false);
+      setIsError(false);
     } catch (err) {
-      setError(true);
+      setIsError(true);
+      setErrorData({ isError: isError, data: err });
       throw err;
     }
   };
@@ -67,13 +78,13 @@ export default function useRequestWithAuthCheck(requestCallback) {
       setIsLoading(true);
       const logoutRes = await api.get("/logout", { withCredentials: true });
       if (logoutRes.status === 200) {
-        navigate("/login");
+        setIsLoggedIn(false);
       }
     } catch (err) {
       console.log(err);
-      navigate("/login");
+      setIsLoggedIn(false);
     }
   };
 
-  return { data, isLoading };
+  return { data, isLoading, errorData };
 }

@@ -1,10 +1,17 @@
 import { useState, useContext } from "react";
 import "./ProfilePictureStyles.css";
 import UserDataContext from "../../../../../../utility/userContext/userContext";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../../../../../../utility/AuthContext/authContext";
 
 export default function ProfilePicture() {
   const [isFollowed, setIsFollwed] = useState();
+  const { username } = useParams();
   const userData = useContext(UserDataContext);
+  const { loggedUserData } = useContext(AuthContext);
+  const followedState = isFollowed
+    ? "followedProfileIcon"
+    : "followProfileIcon";
 
   const handleOnClickFollowEvent = () => {
     setIsFollwed(!isFollowed);
@@ -14,7 +21,11 @@ export default function ProfilePicture() {
     <section className="profilePictureSection-container">
       <div className="followProfileIcon-container">
         <img
-          className={isFollowed ? "followedProfileIcon" : "followProfileIcon"}
+          className={
+            username === null || loggedUserData !== username
+              ? "visitedProfile"
+              : followedState
+          }
           src={
             isFollowed
               ? "/profilePageImgs/FollowedIcon.png"

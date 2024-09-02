@@ -10,7 +10,15 @@
 
 .jokeCategoryCard-container > img {
   width: 5rem;
+  border-radius: 50%;
 }
+
+.categorySelected {
+  background-color: rgb(75, 65, 65);
+  border-radius: 50%;
+  outline: 10px solid white;
+}
+
 .jokeCategoryCard-container:hover {
   color: yellow;
   cursor: pointer;

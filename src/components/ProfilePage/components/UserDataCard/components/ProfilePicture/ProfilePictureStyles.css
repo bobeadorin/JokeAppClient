@@ -15,6 +15,10 @@
   margin-top: 0.5rem;
 }
 
+.visitedProfile {
+  display: none;
+}
+
 .profileImg {
   width: 12em;
   border-radius: 50%;

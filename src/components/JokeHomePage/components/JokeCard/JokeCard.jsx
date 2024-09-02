@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { jokeCardData, userActionsImgPaths } from "../../../../utility/routes";
 import {
@@ -7,37 +8,41 @@ import {
 } from "../../../../utility/jokeCardCustomStyles";
 
 import "./JokeCardStyles.css";
+import { useNavigate } from "react-router-dom";
 
 export default function JokeCard({ jokeConfig }) {
   const [cardAssets, setCardAssets] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
-  const [jokeData, setJokeData] = useState();
+  const navigate = useNavigate();
 
   const handleLikeOnClick = () => {
     setIsLiked(!isLiked);
+  };
+  const handleUserProfileRedirect = (username) => {
+    navigate(`/jokes/profile/${username}`);
   };
   const handleFavoriteOnClick = () => {
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
-    console.log(jokeConfig, "asdas");
+    // eslint-disable-next-line react/prop-types
     switch (jokeConfig.type.category) {
-      case "cat":
+      case "Cat":
         setCardAssets(jokeCardData.cat);
         break;
       case "Programming":
         setCardAssets(jokeCardData.programming);
         break;
-      case "dirty":
+      case "Dirty":
         setCardAssets(jokeCardData.dirty);
         break;
-      case "horror":
+      case "Horror":
         setCardAssets(jokeCardData.horror);
         break;
-      case "knock":
+      case "Knock":
         setCardAssets(jokeCardData.knock);
         break;
     }
@@ -86,26 +91,42 @@ export default function JokeCard({ jokeConfig }) {
         style={{ backgroundColor: `${cardAssets.bgColor}` }}
         className={cardStyles.jokeCardUserActionContainer}
       >
-        <img
-          src={
-            isFavorite
-              ? userActionsImgPaths.favorite.active
-              : userActionsImgPaths.favorite.inactive
+        <div
+          onClick={() =>
+            handleUserProfileRedirect(jokeConfig.type.authorUsername)
           }
-          alt=""
-          onClick={() => handleFavoriteOnClick()}
-          className={cardStyles.favoriteIcon}
-        />
-        <img
-          src={
-            isLiked
-              ? userActionsImgPaths.like.active
-              : userActionsImgPaths.like.inactive
-          }
-          alt=""
-          onClick={() => handleLikeOnClick()}
-          className={cardStyles.likeIcon}
-        />
+          className="jokeAuthor"
+        >
+          <img
+            className="jokeCardAuthor-Img"
+            src="/profilePageImgs/ProfileImg.png"
+          />
+          <p className="joke-AuthorUsername">
+            {jokeConfig.type.authorUsername}
+          </p>
+        </div>
+        <div className="action-container">
+          <img
+            src={
+              isFavorite
+                ? userActionsImgPaths.favorite.active
+                : userActionsImgPaths.favorite.inactive
+            }
+            alt=""
+            onClick={() => handleFavoriteOnClick()}
+            className={cardStyles.favoriteIcon}
+          />
+          <img
+            src={
+              isLiked
+                ? userActionsImgPaths.like.active
+                : userActionsImgPaths.like.inactive
+            }
+            alt=""
+            onClick={() => handleLikeOnClick()}
+            className={cardStyles.likeIcon}
+          />
+        </div>
       </div>
     </section>
   );

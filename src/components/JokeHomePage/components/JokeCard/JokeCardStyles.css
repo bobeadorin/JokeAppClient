@@ -6,6 +6,7 @@
   border-radius: 20px;
   position: relative;
   margin-bottom: 3rem;
+  margin-top: 2rem;
   user-select: none;
 }
 
@@ -40,6 +41,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 1.3rem;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .favoriteIcon {
@@ -56,11 +58,26 @@
   height: 2.5rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 1rem;
   border-radius: 0 0 10px 10px;
+  padding-left: 1rem;
 }
 
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.jokeCardAuthor-Img {
+  width: 1.5rem;
+}
+
+.joke-AuthorUsername {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
 /*---------------small card styles -------------*/
 .jokeCard-containerS {
   width: 10rem;
@@ -124,6 +141,13 @@
   justify-content: flex-end;
   gap: 1rem;
   border-radius: 0 0 10px 10px;
+}
+.jokeAuthor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  cursor: pointer;
 }
 
 /*-------------------------------large card styles ---------------------*/

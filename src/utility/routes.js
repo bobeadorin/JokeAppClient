@@ -23,7 +23,7 @@ export const categoryCardRoutes = [
   {
     route:
       "\\jokeHomePageImages\\jokeSideBarIcons\\jokeCategoryIcons\\knockJokesIcon.png",
-    name: "Knock Knock",
+    name: "Knock",
   },
 ];
 

@@ -33,8 +33,9 @@ export default function SideBar() {
         </div>
       </div>
       <div className="categoryCards-container">
-        {categoryCardRoutes.map((cardInfo) => (
+        {categoryCardRoutes.map((cardInfo, index) => (
           <JokeCategoryCard
+            key={index}
             props={{
               route: cardInfo.route,
               name: cardInfo.name,

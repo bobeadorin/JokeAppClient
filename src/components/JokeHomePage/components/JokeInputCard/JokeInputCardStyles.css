@@ -1,26 +1,23 @@
 .jokeInputCardContainer {
-  width: 75%;
-  height: 15rem;
-  background-color: #f1dfb8;
+  width: 66.5%;
+  background-color: #cfcfcf;
   margin-bottom: 1rem;
   position: relative;
   text-align: center;
-  border-radius: 0 0 30px 30px;
+  border-bottom: 9px solid black;
+  margin-right: 3rem;
 }
-.jokeInputCardContainer > div {
-  position: relative;
-  width: 100%;
-}
+
 .jokeInput {
-  width: 75%;
-  height: 75%;
+  width: 100%;
+  /* height: 75%; */
+  height: 8rem;
   background-color: #fdfdfd;
   border: none;
   border-bottom: solid white 2px;
   text-align: center;
   font-size: 1.5rem;
   outline: none;
-  border-radius: 0 0 10px 10px;
 }
 
 .jokeInput::placeholder {
@@ -28,19 +25,13 @@
   vertical-align: middle;
 }
 
-.jokeInput:focus {
-  background-color: #f0f0f0;
-}
-
 .postJokeIcon {
-  height: 2rem;
-  margin-top: 0.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
   cursor: pointer;
-  border-radius: 50%;
-}
-
-.postJokeIcon:hover {
-  background-color: rgb(4, 94, 212);
 }
 
 .dropbtn {
@@ -94,4 +85,44 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.jokeInputProfileImg {
+  width: 3rem;
+}
+.userInfo-inputCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.username-inputCard {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.post-category {
+  width: 2.5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.post-category-selected {
+  outline: 3px solid rgb(255, 255, 255);
+}
+
+.post-category:hover {
+  outline: 3px solid rgb(255, 255, 255);
+}
+
+.categorySelect-section {
+  padding: 0.5rem;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }

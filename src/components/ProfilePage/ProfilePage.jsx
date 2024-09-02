@@ -1,32 +1,26 @@
+/* eslint-disable no-useless-catch */
 import "./ProfilePageStyles.css";
 import UserDataCard from "./components/UserDataCard/UserDataCard";
 import JokeProfileCard from "./components/JokeProfileCard/JokeProfileCard";
 import StoreProfileCard from "./components/StoreCard/StoreProfileCard";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import UserDataContext from "../../utility/userContext/userContext";
 import useRequestWithAuthCheck from "../../utility/hooks/useRequestWithAuthCheck";
-import api from "../../utility/axiosConfig/axiosConfig";
-
-// Fetch user data function
-const getUserData = async () => {
-  try {
-    const res = await api.get("/getUser", { withCredentials: true });
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch (error) {
-    throw error;
-  }
-};
+import { getUserData } from "../../utility/requests";
+import { AuthContext } from "../../utility/AuthContext/authContext";
 
 export default function ProfilePage() {
   const [isShop, setIsShop] = useState(false);
   const { data, isLoading } = useRequestWithAuthCheck(getUserData); // Use hook to fetch data
+  const { isLoggedIn } = useContext(AuthContext);
 
   if (isLoading) {
-    return <h1>Loading...</h1>; // Loading state
+    return <h1 style={{ height: "100%" }}>Loading...</h1>; // Loading state
   }
 
+  if (isLoggedIn === false) {
+    return <h1 style={{ height: "100%" }}>Not logged</h1>;
+  }
   return (
     <div className="profilePage-wrapper">
       <section className="profilePage-section">

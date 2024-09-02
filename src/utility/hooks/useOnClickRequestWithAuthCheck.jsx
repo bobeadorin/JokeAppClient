@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import api from "../axiosConfig/axiosConfig";
-import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext/authContext";
 
 export default function useOnClickRequestWithAuthCheck(
   requestCallback,
   params = null
 ) {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorData, setErrorData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   const handleRequest = async () => {
     setIsLoading(true);
@@ -24,6 +25,7 @@ export default function useOnClickRequestWithAuthCheck(
           try {
             console.log("Making the request again after refresh...");
             await makeOriginalRequest();
+            setIsLoggedIn(true);
           } catch (err) {
             console.log("Request failed again after refresh, logging out...");
             await logout();
@@ -46,9 +48,10 @@ export default function useOnClickRequestWithAuthCheck(
           ? await requestCallback(params)
           : await requestCallback();
       setData(originalRequest);
-      setError(false);
+      setIsError(false);
     } catch (err) {
-      setError(true);
+      setIsError(true);
+      setErrorData({ isError: isError, data: err });
       throw err;
     }
   };
@@ -73,13 +76,13 @@ export default function useOnClickRequestWithAuthCheck(
       setIsLoading(true);
       const logoutRes = await api.get("/logout", { withCredentials: true });
       if (logoutRes.status === 200) {
-        navigate("/login");
+        setIsLoggedIn(false);
       }
     } catch (err) {
       console.log(err);
-      navigate("/login");
+      setIsLoggedIn(false);
     }
   };
 
-  return { data, isLoading, handleRequest };
+  return { data, isLoading, handleRequest, errorData };
 }

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [data, error, setLoginFormData] = useLogin();
   const navigate = useNavigate();
 
