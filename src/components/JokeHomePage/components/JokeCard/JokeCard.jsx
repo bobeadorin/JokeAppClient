@@ -16,25 +16,13 @@ export default function JokeCard({ jokeConfig }) {
   const [cardAssets, setCardAssets] = useState("");
   const [isLiked, setIsLiked] = useState(jokeConfig.item.isLiked);
   const [isFavorite, setIsFavorite] = useState(jokeConfig.item.isFavorite);
-  const [action, setAction] = useState({
-    method: addJokeToFavorite,
-    params: jokeConfig.item.joke.id,
-  });
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
-  const { handleRequest } = useOnClickRequestWithAuthCheck(
-    action.method,
-    action.params
-  );
+  const { handleRequest } = useOnClickRequestWithAuthCheck();
   const navigate = useNavigate();
 
   const handleLikeOnClick = async () => {
-    setAction({
-      method: likeJoke,
-      params: jokeConfig.item.joke.id,
-    });
-    console.log(action, "action");
     setIsLiked(!isLiked);
-    await handleRequest();
+    await handleRequest(likeJoke, jokeConfig.item.joke.id);
   };
 
   const handleUserProfileRedirect = (username) => {
@@ -42,14 +30,8 @@ export default function JokeCard({ jokeConfig }) {
   };
 
   const handleFavoriteOnClick = async () => {
-    setAction({
-      method: addJokeToFavorite,
-      params: jokeConfig.item.joke.id,
-    });
-    console.log(action, "action");
-
     setIsFavorite(!isFavorite);
-    await handleRequest();
+    await handleRequest(addJokeToFavorite, jokeConfig.item.joke.id);
   };
 
   useEffect(() => {

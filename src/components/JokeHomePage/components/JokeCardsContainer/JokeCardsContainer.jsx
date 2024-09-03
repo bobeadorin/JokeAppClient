@@ -40,6 +40,7 @@ export default function JokeCardsContainer() {
               jokeConfig={{ item, size: "default" }}
             />
           ))}
+          <div>lol</div>
         </div>
       </div>
     </section>

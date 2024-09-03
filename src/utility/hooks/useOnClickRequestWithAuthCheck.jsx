@@ -2,29 +2,26 @@ import { useState, useContext } from "react";
 import api from "../axiosConfig/axiosConfig";
 import { AuthContext } from "../AuthContext/authContext";
 
-export default function useOnClickRequestWithAuthCheck(
-  requestCallback,
-  params = null
-) {
+export default function useOnClickRequestWithAuthCheck() {
   const [data, setData] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorData, setErrorData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { setIsLoggedIn } = useContext(AuthContext);
 
-  const handleRequest = async () => {
+  const handleRequest = async (requestCallback, params = null) => {
     setIsLoading(true);
     try {
-      await makeOriginalRequest();
+      await makeOriginalRequest(requestCallback, params);
     } catch (err) {
       console.log("First request failed, attempting refresh...");
       console.log(err);
-      if (err.response.status === 401) {
+      if (err.response?.status === 401) {
         const refreshSuccessful = await refreshToken();
         if (refreshSuccessful) {
           try {
             console.log("Making the request again after refresh...");
-            await makeOriginalRequest();
+            await makeOriginalRequest(requestCallback, params);
             setIsLoggedIn(true);
           } catch (err) {
             console.log("Request failed again after refresh, logging out...");
@@ -34,14 +31,16 @@ export default function useOnClickRequestWithAuthCheck(
           console.log("Refresh token failed, logging out...");
           await logout();
         }
+      } else {
+        setIsError(true);
+        setErrorData(err);
       }
     } finally {
       setIsLoading(false);
     }
   };
 
-  const makeOriginalRequest = async () => {
-    setIsLoading(true);
+  const makeOriginalRequest = async (requestCallback, params) => {
     try {
       const originalRequest =
         params != null
@@ -51,7 +50,7 @@ export default function useOnClickRequestWithAuthCheck(
       setIsError(false);
     } catch (err) {
       setIsError(true);
-      setErrorData({ isError: isError, data: err });
+      setErrorData(err);
       throw err;
     }
   };
@@ -84,5 +83,5 @@ export default function useOnClickRequestWithAuthCheck(
     }
   };
 
-  return { data, isLoading, handleRequest, errorData };
+  return { data, isLoading, handleRequest, errorData, isError };
 }

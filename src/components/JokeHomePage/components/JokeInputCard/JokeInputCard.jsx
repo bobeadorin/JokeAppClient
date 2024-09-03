@@ -11,10 +11,7 @@ export default function JokeInputCard() {
   const [jokeText, setJokeText] = useState("");
   const [category, setCategory] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
-  const { data, handleRequest } = useOnClickRequestWithAuthCheck(postJoke, {
-    joke: jokeText,
-    category: category,
-  });
+  const { data, handleRequest } = useOnClickRequestWithAuthCheck();
   const { loggedUserData, isLoggedIn } = useContext(AuthContext);
 
   const handleOnChange = (e) => {
@@ -30,7 +27,7 @@ export default function JokeInputCard() {
   };
 
   const handleSubmitJoke = async () => {
-    await handleRequest();
+    await handleRequest(postJoke, { joke: jokeText, category: category });
     if (data === true) {
       setJokeText("");
       setCategory("");

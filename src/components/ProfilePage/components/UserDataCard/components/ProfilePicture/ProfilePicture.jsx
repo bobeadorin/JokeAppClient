@@ -11,10 +11,7 @@ export default function ProfilePicture() {
   const user = useContext(UserDataContext);
   const { loggedUserData } = useContext(AuthContext);
   const [isFollowed, setIsFollowed] = useState(user.isFollowed);
-  const { handleRequest } = useOnClickRequestWithAuthCheck(
-    followUser,
-    username
-  );
+  const { handleRequest } = useOnClickRequestWithAuthCheck();
   console.log(user.isFollowed);
   const followedState = isFollowed
     ? "followedProfileIcon"
@@ -24,7 +21,7 @@ export default function ProfilePicture() {
 
   const handleOnClickFollowEvent = async () => {
     setIsFollowed(!isFollowed);
-    await handleRequest();
+    await handleRequest(followUser, username);
   };
 
   return (
