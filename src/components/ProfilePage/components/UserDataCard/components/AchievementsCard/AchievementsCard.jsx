@@ -3,7 +3,7 @@ import { useContext } from "react";
 import UserDataContext from "../../../../../../utility/userContext/userContext";
 
 export default function AchievementsCard() {
-  const userData = useContext(UserDataContext);
+  const user = useContext(UserDataContext);
 
   return (
     <section className="AchievementsCardContainer">
@@ -20,7 +20,7 @@ export default function AchievementsCard() {
               alt=""
             />
             <p className="userAssets_values">
-              {userData !== null ? userData.likes : "nu merge"}
+              {user.userData !== null ? user.userData.likes : "nu merge"}
             </p>
           </div>
           <div className="userAssets">
@@ -30,7 +30,9 @@ export default function AchievementsCard() {
               alt=""
             />
             <p className="userAssets_values">
-              {userData !== null ? userData.followersNumber : "nu merge"}
+              {user.userData !== null
+                ? user.userData.followersNumber
+                : "nu merge"}
             </p>
           </div>
           <div className="userAssets">
@@ -40,7 +42,7 @@ export default function AchievementsCard() {
               alt=""
             />
             <p className="userAssets_values">
-              {userData !== null ? userData.postsNumber : "nu merge"}
+              {user.userData !== null ? user.userData.postsNumber : "nu merge"}
             </p>
           </div>
         </div>

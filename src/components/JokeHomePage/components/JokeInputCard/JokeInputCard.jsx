@@ -2,25 +2,25 @@ import { useState, useContext } from "react";
 import "./JokeInputCardStyles.css";
 import { postJoke } from "../../../../utility/requests";
 import useOnClickRequestWithAuthCheck from "../../../../utility/hooks/useOnClickRequestWithAuthCheck";
+import LoginPopup from "../../../LoginPopup/LoginPopup";
 import { categoryCardRoutes } from "../../../../utility/routes";
 import { AuthContext } from "../../../../utility/AuthContext/authContext";
-import { useNavigate } from "react-router-dom";
 
 export default function JokeInputCard() {
   const [placeHolderText, setPlaceHolderText] = useState("Write a joke!");
   const [jokeText, setJokeText] = useState("");
   const [category, setCategory] = useState("");
+  const [showPopUp, setShowPopUp] = useState(false);
   const { data, handleRequest } = useOnClickRequestWithAuthCheck(postJoke, {
     joke: jokeText,
     category: category,
   });
   const { loggedUserData, isLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     console.log(isLoggedIn, loggedUserData);
-    if (!isLoggedIn) {
-      navigate("/login");
+    if (isLoggedIn === false) {
+      setShowPopUp(true);
     }
     setJokeText(e.target.value);
   };
@@ -75,6 +75,7 @@ export default function JokeInputCard() {
           onClick={async () => handleSubmitJoke()}
         />
       </div>
+      {showPopUp && <LoginPopup />}
     </section>
   );
 }

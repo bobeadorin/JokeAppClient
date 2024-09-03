@@ -32,7 +32,7 @@ export default function JokeProfileCard() {
             alt=""
           />
         </div>
-        <JokeCarousel />
+        {/* <JokeCarousel /> */}
       </div>
     </section>
   );

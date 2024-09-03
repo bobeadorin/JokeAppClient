@@ -3,29 +3,35 @@ import "./ProfilePictureStyles.css";
 import UserDataContext from "../../../../../../utility/userContext/userContext";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../../../../utility/AuthContext/authContext";
+import useOnClickRequestWithAuthCheck from "../../../../../../utility/hooks/useOnClickRequestWithAuthCheck";
+import { followUser } from "../../../../../../utility/requests";
 
 export default function ProfilePicture() {
-  const [isFollowed, setIsFollwed] = useState();
   const { username } = useParams();
-  const userData = useContext(UserDataContext);
+  const user = useContext(UserDataContext);
   const { loggedUserData } = useContext(AuthContext);
+  const [isFollowed, setIsFollowed] = useState(user.isFollowed);
+  const { handleRequest } = useOnClickRequestWithAuthCheck(
+    followUser,
+    username
+  );
+  console.log(user.isFollowed);
   const followedState = isFollowed
     ? "followedProfileIcon"
     : "followProfileIcon";
 
-  const handleOnClickFollowEvent = () => {
-    setIsFollwed(!isFollowed);
+  console.log(loggedUserData);
+
+  const handleOnClickFollowEvent = async () => {
+    setIsFollowed(!isFollowed);
+    await handleRequest();
   };
 
   return (
     <section className="profilePictureSection-container">
       <div className="followProfileIcon-container">
         <img
-          className={
-            username === null || loggedUserData !== username
-              ? "visitedProfile"
-              : followedState
-          }
+          className={username === null ? "visitedProfile" : followedState}
           src={
             isFollowed
               ? "/profilePageImgs/FollowedIcon.png"
@@ -44,7 +50,7 @@ export default function ProfilePicture() {
         />
       </div>
       <div className="UserNameAndStatusContainer">
-        <h2>{userData !== null ? userData.username : "nu merge"}</h2>
+        <h2>{user !== null ? user.userData.username : "nu merge"}</h2>
         <p>Master Memer</p>
       </div>
     </section>

@@ -4,10 +4,10 @@ import { useState, createContext } from "react";
 export const LoginPopupContext = createContext();
 
 export function LoginPopupProvider({ children }) {
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <LoginPopupContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
+    <LoginPopupContext.Provider value={{ showPopup, setShowPopup }}>
       {children}
     </LoginPopupContext.Provider>
   );

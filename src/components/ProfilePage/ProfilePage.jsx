@@ -27,7 +27,7 @@ export default function ProfilePage() {
         <UserDataContext.Provider value={data}>
           <UserDataCard />
         </UserDataContext.Provider>
-        {isShop ? <StoreProfileCard /> : <JokeProfileCard />}
+        {/* {isShop ? <StoreProfileCard /> : <JokeProfileCard />} */}
 
         <div className="sectionSelector">
           <div className="jokeSelector" onClick={() => setIsShop(false)}>

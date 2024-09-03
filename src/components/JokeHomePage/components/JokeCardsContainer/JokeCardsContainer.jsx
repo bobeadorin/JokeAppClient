@@ -24,6 +24,7 @@ export default function JokeCardsContainer() {
       }
     };
     getJokesByPage();
+    console.log(jokes);
   }, [category]);
 
   if (jokes === null) return <div>not yet</div>;
@@ -33,10 +34,10 @@ export default function JokeCardsContainer() {
       <div className="JokeCardsBgContainer">
         <JokeInputCard />
         <div className="cardsWrapper">
-          {jokes.map((element) => (
+          {jokes.map((item) => (
             <JokeCard
-              key={element.id}
-              jokeConfig={{ type: element, size: "default" }}
+              key={item.joke.id}
+              jokeConfig={{ item, size: "default" }}
             />
           ))}
         </div>

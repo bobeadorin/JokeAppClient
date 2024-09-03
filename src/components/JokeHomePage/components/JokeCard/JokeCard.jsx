@@ -9,27 +9,53 @@ import {
 
 import "./JokeCardStyles.css";
 import { useNavigate } from "react-router-dom";
+import { addJokeToFavorite, likeJoke } from "../../../../utility/requests";
+import useOnClickRequestWithAuthCheck from "../../../../utility/hooks/useOnClickRequestWithAuthCheck";
 
 export default function JokeCard({ jokeConfig }) {
   const [cardAssets, setCardAssets] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isLiked, setIsLiked] = useState(jokeConfig.item.isLiked);
+  const [isFavorite, setIsFavorite] = useState(jokeConfig.item.isFavorite);
+  const [action, setAction] = useState({
+    method: addJokeToFavorite,
+    params: jokeConfig.item.joke.id,
+  });
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
+  const { handleRequest } = useOnClickRequestWithAuthCheck(
+    action.method,
+    action.params
+  );
   const navigate = useNavigate();
 
-  const handleLikeOnClick = () => {
+  const handleLikeOnClick = async () => {
+    setAction({
+      method: likeJoke,
+      params: jokeConfig.item.joke.id,
+    });
+    console.log(action, "action");
     setIsLiked(!isLiked);
+    await handleRequest();
   };
+
   const handleUserProfileRedirect = (username) => {
     navigate(`/jokes/profile/${username}`);
   };
-  const handleFavoriteOnClick = () => {
+
+  const handleFavoriteOnClick = async () => {
+    setAction({
+      method: addJokeToFavorite,
+      params: jokeConfig.item.joke.id,
+    });
+    console.log(action, "action");
+
     setIsFavorite(!isFavorite);
+    await handleRequest();
   };
 
   useEffect(() => {
     // eslint-disable-next-line react/prop-types
-    switch (jokeConfig.type.category) {
+    console.log(jokeConfig, "asdads");
+    switch (jokeConfig.item.joke.category) {
       case "Cat":
         setCardAssets(jokeCardData.cat);
         break;
@@ -83,7 +109,9 @@ export default function JokeCard({ jokeConfig }) {
       </div>
       <div>
         <div className={cardStyles.jokeText}>
-          <p className={cardStyles.firstJokePart}>{jokeConfig.type.text}</p>
+          <p className={cardStyles.firstJokePart}>
+            {jokeConfig.item.joke.text}
+          </p>
           {/* <p className={cardStyles.jokePunchLine}>{jokeConfig.type.text}</p> */}
         </div>
       </div>
@@ -93,7 +121,7 @@ export default function JokeCard({ jokeConfig }) {
       >
         <div
           onClick={() =>
-            handleUserProfileRedirect(jokeConfig.type.authorUsername)
+            handleUserProfileRedirect(jokeConfig.item.joke.authorUsername)
           }
           className="jokeAuthor"
         >
@@ -102,7 +130,7 @@ export default function JokeCard({ jokeConfig }) {
             src="/profilePageImgs/ProfileImg.png"
           />
           <p className="joke-AuthorUsername">
-            {jokeConfig.type.authorUsername}
+            {jokeConfig.item.joke.authorUsername}
           </p>
         </div>
         <div className="action-container">
