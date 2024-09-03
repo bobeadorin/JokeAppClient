@@ -1,18 +1,19 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { jokeCardData, userActionsImgPaths } from "../../../../utility/routes";
 import {
   smallScaleCardStyles,
   largeScaleCardStyles,
   defaultCardStyles,
 } from "../../../../utility/jokeCardCustomStyles";
-
 import "./JokeCardStyles.css";
 import { useNavigate } from "react-router-dom";
 import { addJokeToFavorite, likeJoke } from "../../../../utility/requests";
 import useOnClickRequestWithAuthCheck from "../../../../utility/hooks/useOnClickRequestWithAuthCheck";
 
-export default function JokeCard({ jokeConfig }) {
+// Wrap the functional component with React.forwardRef
+const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
   const [cardAssets, setCardAssets] = useState("");
   const [isLiked, setIsLiked] = useState(jokeConfig.item.isLiked);
   const [isFavorite, setIsFavorite] = useState(jokeConfig.item.isFavorite);
@@ -35,8 +36,6 @@ export default function JokeCard({ jokeConfig }) {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react/prop-types
-    console.log(jokeConfig, "asdads");
     switch (jokeConfig.item.joke.category) {
       case "Cat":
         setCardAssets(jokeCardData.cat);
@@ -53,8 +52,11 @@ export default function JokeCard({ jokeConfig }) {
       case "Knock":
         setCardAssets(jokeCardData.knock);
         break;
+      default:
+        setCardAssets(jokeCardData.default); // Add a default category if needed
+        break;
     }
-  }, []);
+  }, [jokeConfig]);
 
   useEffect(() => {
     switch (jokeConfig.size) {
@@ -68,10 +70,10 @@ export default function JokeCard({ jokeConfig }) {
         setCardStyles(defaultCardStyles);
         break;
     }
-  }, []);
+  }, [jokeConfig.size]);
 
   return (
-    <section className={cardStyles.jokeCardContainer}>
+    <section className={cardStyles.jokeCardContainer} ref={ref}>
       <div className={cardStyles.jokeTopSideContainer}>
         <img
           className={cardStyles.jokeCardTopIcon}
@@ -94,7 +96,6 @@ export default function JokeCard({ jokeConfig }) {
           <p className={cardStyles.firstJokePart}>
             {jokeConfig.item.joke.text}
           </p>
-          {/* <p className={cardStyles.jokePunchLine}>{jokeConfig.type.text}</p> */}
         </div>
       </div>
       <div
@@ -110,6 +111,7 @@ export default function JokeCard({ jokeConfig }) {
           <img
             className="jokeCardAuthor-Img"
             src="/profilePageImgs/ProfileImg.png"
+            alt=""
           />
           <p className="joke-AuthorUsername">
             {jokeConfig.item.joke.authorUsername}
@@ -140,4 +142,6 @@ export default function JokeCard({ jokeConfig }) {
       </div>
     </section>
   );
-}
+});
+
+export default JokeCard;

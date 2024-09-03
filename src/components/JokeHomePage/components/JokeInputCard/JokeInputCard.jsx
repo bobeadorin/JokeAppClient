@@ -12,13 +12,13 @@ export default function JokeInputCard() {
   const [category, setCategory] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const { data, handleRequest } = useOnClickRequestWithAuthCheck();
-  const { loggedUserData, isLoggedIn } = useContext(AuthContext);
+  // const { loggedUserData, isLoggedIn } = useContext(AuthContext);
 
   const handleOnChange = (e) => {
-    console.log(isLoggedIn, loggedUserData);
-    if (isLoggedIn === false) {
-      setShowPopUp(true);
-    }
+    // console.log(isLoggedIn, loggedUserData);
+    // if (isLoggedIn === false) {
+    //   setShowPopUp(true);
+    // }
     setJokeText(e.target.value);
   };
 
@@ -72,7 +72,7 @@ export default function JokeInputCard() {
           onClick={async () => handleSubmitJoke()}
         />
       </div>
-      {showPopUp && <LoginPopup />}
+      {/* {showPopUp && <LoginPopup />} */}
     </section>
   );
 }
