@@ -80,3 +80,16 @@ export const likeJoke = async (id) => {
     throw error;
   }
 };
+
+export const getUserFavoriteJokes = async () => {
+  try {
+    const res = await api.get("/getUserFavoriteJokes", {
+      withCredentials: true,
+    });
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

@@ -50,17 +50,16 @@ export default function JokeCardsContainer() {
   useEffect(() => {
     console.log(`Category changed to: ${jokeCategory}`);
 
-    // Reset states for new category
     setJokes([]);
     setPage(1);
     setHasMore(true);
 
-    // Fetch jokes for the new category
     loadMorePosts();
   }, [jokeCategory]);
 
   useEffect(() => {
     loadMorePosts();
+    console.log(jokes);
   }, [page]);
 
   const lastPostElementRef = useCallback(
@@ -80,28 +79,23 @@ export default function JokeCardsContainer() {
   );
 
   useEffect(() => {
-    console.log("Component rendered or updated");
-    console.log(`Category changed to: ${jokeCategory}`);
-    console.log(`Jokes changed to: ${jokes}`);
+    // console.log("Component rendered or updated");
+    // console.log(`Category changed to: ${jokeCategory}`);
+    // console.log(`Jokes changed to: ${jokes}`);
   });
 
   if (!jokes.length && !loading) return <div>No jokes available.</div>;
 
   return (
-    <section className="JokeCardsContainer">
-      <div className="JokeCardsBgContainer">
-        <JokeInputCard />
-        <div className="cardsWrapper">
-          {jokes.map((item, index) => (
-            <JokeCard
-              key={item.joke.id}
-              jokeConfig={{ item, size: "default" }}
-              ref={jokes.length === index + 1 ? lastPostElementRef : null}
-            />
-          ))}
-          {loading && <div>Loading...</div>}
-        </div>
-      </div>
-    </section>
+    <div className="cardsWrapper">
+      {jokes.map((item, index) => (
+        <JokeCard
+          key={item.joke.id}
+          jokeConfig={{ ...item, size: "default" }}
+          ref={jokes.length === index + 1 ? lastPostElementRef : null}
+        />
+      ))}
+      {loading && <div>Loading...</div>}
+    </div>
   );
 }

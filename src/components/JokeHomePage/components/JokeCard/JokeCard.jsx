@@ -15,15 +15,15 @@ import useOnClickRequestWithAuthCheck from "../../../../utility/hooks/useOnClick
 // Wrap the functional component with React.forwardRef
 const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
   const [cardAssets, setCardAssets] = useState("");
-  const [isLiked, setIsLiked] = useState(jokeConfig.item.isLiked);
-  const [isFavorite, setIsFavorite] = useState(jokeConfig.item.isFavorite);
+  const [isLiked, setIsLiked] = useState(jokeConfig.isLiked);
+  const [isFavorite, setIsFavorite] = useState(jokeConfig.isFavorite);
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
   const { handleRequest } = useOnClickRequestWithAuthCheck();
   const navigate = useNavigate();
-
+  console.log(jokeConfig, "lol");
   const handleLikeOnClick = async () => {
     setIsLiked(!isLiked);
-    await handleRequest(likeJoke, jokeConfig.item.joke.id);
+    await handleRequest(likeJoke, jokeConfig.joke.id);
   };
 
   const handleUserProfileRedirect = (username) => {
@@ -32,11 +32,11 @@ const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
 
   const handleFavoriteOnClick = async () => {
     setIsFavorite(!isFavorite);
-    await handleRequest(addJokeToFavorite, jokeConfig.item.joke.id);
+    await handleRequest(addJokeToFavorite, jokeConfig.joke.id);
   };
 
   useEffect(() => {
-    switch (jokeConfig.item.joke.category) {
+    switch (jokeConfig.joke.category) {
       case "Cat":
         setCardAssets(jokeCardData.cat);
         break;
@@ -93,9 +93,7 @@ const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
       </div>
       <div>
         <div className={cardStyles.jokeText}>
-          <p className={cardStyles.firstJokePart}>
-            {jokeConfig.item.joke.text}
-          </p>
+          <p className={cardStyles.firstJokePart}>{jokeConfig.joke.text}</p>
         </div>
       </div>
       <div
@@ -104,7 +102,7 @@ const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
       >
         <div
           onClick={() =>
-            handleUserProfileRedirect(jokeConfig.item.joke.authorUsername)
+            handleUserProfileRedirect(jokeConfig.joke.authorUsername)
           }
           className="jokeAuthor"
         >
@@ -114,7 +112,7 @@ const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
             alt=""
           />
           <p className="joke-AuthorUsername">
-            {jokeConfig.item.joke.authorUsername}
+            {jokeConfig.joke.authorUsername}
           </p>
         </div>
         <div className="action-container">

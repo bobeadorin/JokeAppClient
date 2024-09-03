@@ -28,10 +28,8 @@ export default function JokeInputCard() {
 
   const handleSubmitJoke = async () => {
     await handleRequest(postJoke, { joke: jokeText, category: category });
-    if (data === true) {
-      setJokeText("");
-      setCategory("");
-    }
+    setJokeText("");
+    setCategory("");
   };
 
   return (
