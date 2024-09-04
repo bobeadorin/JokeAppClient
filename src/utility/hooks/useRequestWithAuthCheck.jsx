@@ -15,6 +15,9 @@ export default function useRequestWithAuthCheck(
   useEffect(() => {
     const handleRequest = async () => {
       try {
+        console.log(requestCallback, "in hook");
+        console.log(params, "in hook");
+
         await makeOriginalRequest();
       } catch (err) {
         console.log("First request failed, attempting refresh...");
@@ -40,7 +43,7 @@ export default function useRequestWithAuthCheck(
     };
 
     handleRequest();
-  }, []);
+  }, [requestCallback, params]);
 
   const makeOriginalRequest = async () => {
     setIsLoading(true);

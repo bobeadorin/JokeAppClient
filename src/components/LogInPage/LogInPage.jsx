@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Validate from "../../utility/validateFields";
 import useLogin from "../../utility/hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../utility/AuthContext/authContext";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [data, error, setLoginFormData] = useLogin();
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
+      login();
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

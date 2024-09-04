@@ -1,9 +1,9 @@
-import "./JokeNavbarStyles.css";
-import { useNavigate } from "react-router-dom";
+import "./ShopNavbarStyles.css";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../utility/AuthContext/authContext";
 
-export default function JokeNavbar() {
+export default function ShopNavbar() {
   const navigate = useNavigate();
   const { isLoggedIn, logout } = useContext(AuthContext);
 
@@ -12,26 +12,32 @@ export default function JokeNavbar() {
   };
 
   return (
-    <div className="jokeNavbar">
+    <div className="shopNavbar">
       <img
-        src="\jokeHomePageImages\jokeNavbarImgs\jokeLogoNavbar.png"
+        src="\jokeHomePageImages\jokeNavbarImgs\shopLogoNavbar.png"
         alt="jokeLogo"
-        className="jokeNavbarLogo navbarItems"
-        onClick={() => navigate("/jokes")}
+        className="shopNavbarLogo navbarItems"
+        onClick={() => navigate("/shop")}
       />
       <img
         src="\jokeHomePageImages\jokeNavbarImgs\middleLogoNavbar.png"
         alt=""
         className="jokeMiddleLogo navbarItems"
       />
+
       <div className="routesContainer">
         <img
-          src="\jokeHomePageImages\jokeNavbarImgs\shopLogoNavbar.png"
+          src="\jokeHomePageImages\jokeNavbarImgs\jokeLogoNavbar.png"
           alt=""
           className="shopLogo navbarItems"
-          onClick={() => navigate("/shop")}
+          onClick={() => navigate("/jokes")}
         />
-
+        <img
+          src="\shopHomePageImages\shopNavbarLogo\ShopCartLogo.png"
+          className="navbarItems"
+          alt=""
+          onClick={() => navigate("/shopCart")}
+        />
         <div className="profileLogoContainer">
           {isLoggedIn ? (
             <img

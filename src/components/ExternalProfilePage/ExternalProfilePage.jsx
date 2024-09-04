@@ -26,8 +26,8 @@ export default function ExternalProfilePage() {
       <section className="profilePage-section">
         <UserDataContext.Provider value={data}>
           <UserDataCard />
+          <JokeProfileCard />
         </UserDataContext.Provider>
-        <JokeProfileCard />
       </section>
     </div>
   );

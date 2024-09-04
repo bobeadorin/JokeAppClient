@@ -20,7 +20,7 @@ const JokeCard = React.forwardRef(({ jokeConfig }, ref) => {
   const [cardStyles, setCardStyles] = useState(defaultCardStyles);
   const { handleRequest } = useOnClickRequestWithAuthCheck();
   const navigate = useNavigate();
-  console.log(jokeConfig, "lol");
+
   const handleLikeOnClick = async () => {
     setIsLiked(!isLiked);
     await handleRequest(likeJoke, jokeConfig.joke.id);

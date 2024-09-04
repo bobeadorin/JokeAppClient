@@ -86,6 +86,7 @@
   border-radius: 2px;
   position: relative;
   user-select: none;
+  z-index: 3;
 }
 
 .jokeCardBgS {
@@ -115,16 +116,18 @@
 .jokeTextS {
   padding: 1rem;
   background-color: aliceblue;
-  max-width: 11rem;
-  max-height: 3rem;
+  width: 11rem;
+  height: 3rem;
   font-family: "Roboto", sans-serif;
-  font-size: 0.7rem;
-  text-overflow: ellipsis;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  overflow: hidden;
 }
 
+.firstJokePartS {
+  font-size: 0.7em;
+  white-space: wrap;
+  text-overflow: ellipsis;
+}
 .favoriteIconS {
   height: 1rem;
   cursor: pointer;

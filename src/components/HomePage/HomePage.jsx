@@ -6,7 +6,7 @@ export default function HomePage() {
 
   const handleOnClickNavigate = (path) => {
     if (path === "jokes") navigate("/jokes");
-    if (path === "store") navigate("/store");
+    if (path === "shop") navigate("/shop");
   };
 
   return (
@@ -44,7 +44,7 @@ export default function HomePage() {
           src="\homePageImages\shopSideGif.gif"
           className="shopLogoAnimation"
           alt="shopLogo"
-          onClick={() => handleOnClickNavigate("store")}
+          onClick={() => handleOnClickNavigate("shop")}
         />
       </section>
     </div>

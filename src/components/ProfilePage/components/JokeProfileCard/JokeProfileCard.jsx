@@ -2,12 +2,24 @@ import "./JokeProfileCardStyles.css";
 import JokeCard from "../../../JokeHomePage/components/JokeCard/JokeCard";
 import JokeCarousel from "../JokeCarousel/JokeCarousel";
 import useRequestWithAuthCheck from "../../../../utility/hooks/useRequestWithAuthCheck";
-import { getUserFavoriteJokes } from "../../../../utility/requests";
-import { useEffect, useState } from "react";
+import {
+  getUserFavoriteJokes,
+  getUserPostedJokes,
+} from "../../../../utility/requests";
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import UserDataContext from "../../../../utility/userContext/userContext";
 
 export default function JokeProfileCard() {
-  const { data, isLoading, errorData } =
-    useRequestWithAuthCheck(getUserFavoriteJokes);
+  const { username } = useParams();
+  const user = useContext(UserDataContext);
+  const getDataFunc = username ? getUserPostedJokes : getUserFavoriteJokes;
+  const getParams = username ? user.userData.id : null;
+
+  const { data, isLoading, errorData } = useRequestWithAuthCheck(
+    getDataFunc,
+    getParams
+  );
   const [spotlightJokeData, setSpotlightJokeData] = useState(null);
   const [dataIndex, setdataIndex] = useState(0);
 
@@ -67,7 +79,9 @@ export default function JokeProfileCard() {
             onClick={handleIndexIncrement}
           />
         </div>
-        <JokeCarousel data={{ jokes: data }} />
+        <JokeCarousel
+          data={{ jokes: data, index: dataIndex, setIndex: setdataIndex }}
+        />
       </div>
     </section>
   );

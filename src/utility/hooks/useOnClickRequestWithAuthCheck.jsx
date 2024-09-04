@@ -7,7 +7,7 @@ export default function useOnClickRequestWithAuthCheck() {
   const [isError, setIsError] = useState(false);
   const [errorData, setErrorData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { login, logout } = useContext(AuthContext);
 
   const handleRequest = async (requestCallback, params = null) => {
     setIsLoading(true);
@@ -22,7 +22,7 @@ export default function useOnClickRequestWithAuthCheck() {
           try {
             console.log("Making the request again after refresh...");
             await makeOriginalRequest(requestCallback, params);
-            setIsLoggedIn(true);
+            login();
           } catch (err) {
             console.log("Request failed again after refresh, logging out...");
             await logout();
@@ -70,18 +70,14 @@ export default function useOnClickRequestWithAuthCheck() {
     return false;
   };
 
-  const logout = async () => {
-    try {
-      setIsLoading(true);
-      const logoutRes = await api.get("/logout", { withCredentials: true });
-      if (logoutRes.status === 200) {
-        setIsLoggedIn(false);
-      }
-    } catch (err) {
-      console.log(err);
-      setIsLoggedIn(false);
-    }
-  };
+  // const logout = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const logoutRes = await api.get("/logout", { withCredentials: true });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return { data, isLoading, handleRequest, errorData, isError };
 }

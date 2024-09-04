@@ -93,3 +93,27 @@ export const getUserFavoriteJokes = async () => {
     throw error;
   }
 };
+
+export const getUserPostedJokes = async (id) => {
+  try {
+    const res = await api.get(`/getPostedJokes/${id}`, {
+      withCredentials: true,
+    });
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    const logoutRes = await api.get("/logout", { withCredentials: true });
+    if (logoutRes.status === 200) {
+      return true;
+    }
+  } catch (err) {
+    return false;
+  }
+};

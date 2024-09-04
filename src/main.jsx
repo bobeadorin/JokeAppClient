@@ -12,6 +12,8 @@ import Layout from "./components/Layout/Layout/Layout.jsx";
 import { AuthProvider } from "./utility/AuthContext/authContext.jsx";
 import { LoginPopupProvider } from "./utility/loginPopUpContext/loginPopUpContext.jsx";
 import LoginPopup from "./components/LoginPopup/LoginPopup.jsx";
+import ShopLayout from "./components/ShopComponents/ShopLayout/Layout/ShopLayout.jsx";
+import ShopHomePage from "./components/ShopComponents/ShopHomePage/ShopHomePage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -57,6 +59,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 <Layout>
                   <ExternalProfilePage />
                 </Layout>
+              }
+            />
+            <Route
+              exact
+              path="/shop"
+              element={
+                <ShopLayout>
+                  <ShopHomePage />
+                </ShopLayout>
               }
             />
           </Routes>

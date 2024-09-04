@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import "./JokeInputCardStyles.css";
 import { postJoke } from "../../../../utility/requests";
 import useOnClickRequestWithAuthCheck from "../../../../utility/hooks/useOnClickRequestWithAuthCheck";
-import LoginPopup from "../../../LoginPopup/LoginPopup";
 import { categoryCardRoutes } from "../../../../utility/routes";
 import { AuthContext } from "../../../../utility/AuthContext/authContext";
 
@@ -10,15 +9,15 @@ export default function JokeInputCard() {
   const [placeHolderText, setPlaceHolderText] = useState("Write a joke!");
   const [jokeText, setJokeText] = useState("");
   const [category, setCategory] = useState("");
-  const [showPopUp, setShowPopUp] = useState(false);
-  const { data, handleRequest } = useOnClickRequestWithAuthCheck();
-  // const { loggedUserData, isLoggedIn } = useContext(AuthContext);
+  const { handleRequest } = useOnClickRequestWithAuthCheck();
+  const { loggedUserData, isLoggedIn, isLoading } = useContext(AuthContext);
+
+  // Display loading state until data is ready
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const handleOnChange = (e) => {
-    // console.log(isLoggedIn, loggedUserData);
-    // if (isLoggedIn === false) {
-    //   setShowPopUp(true);
-    // }
     setJokeText(e.target.value);
   };
 
@@ -40,7 +39,9 @@ export default function JokeInputCard() {
           src="/profilePageImgs/ProfileImg.png"
           alt=""
         />
-        <p className="username-inputCard">JoeDoeTheFirst</p>
+        <p className="username-inputCard">
+          {isLoggedIn && loggedUserData ? loggedUserData.username : "User"}
+        </p>
       </div>
       <input
         placeholder={placeHolderText}
@@ -54,7 +55,7 @@ export default function JokeInputCard() {
         {categoryCardRoutes.map((element, index) => (
           <img
             className={
-              category == element.name
+              category === element.name
                 ? "post-category post-category-selected"
                 : "post-category"
             }
@@ -70,7 +71,6 @@ export default function JokeInputCard() {
           onClick={async () => handleSubmitJoke()}
         />
       </div>
-      {/* {showPopUp && <LoginPopup />} */}
     </section>
   );
 }
