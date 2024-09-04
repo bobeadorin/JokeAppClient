@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, createContext, useEffect } from "react";
 import api from "../axiosConfig/axiosConfig";
 
@@ -16,8 +17,7 @@ export function AuthProvider({ children }) {
         console.log(res.data, "Data");
         setIsLoggedIn(true);
       } catch {
-        setIsLoggedIn(false);
-        setLoggedUserData(null);
+        await refreshToken();
       } finally {
         setIsLoading(false); // Done loading
       }
@@ -36,6 +36,22 @@ export function AuthProvider({ children }) {
       setIsLoggedIn(false);
     } catch (error) {
       console.error("Logout failed:", error);
+    }
+  };
+
+  const refreshToken = async () => {
+    try {
+      setIsLoading(true);
+      const refreshRequest = await api.get("/refresh", {
+        withCredentials: true,
+      });
+      if (refreshRequest.status === 200) {
+        setIsLoggedIn(true);
+      }
+    } catch (err) {
+      setIsLoggedIn(false);
+      setLoggedUserData(null);
+      console.error("Refresh token request failed", err);
     }
   };
 

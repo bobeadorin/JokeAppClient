@@ -1,6 +1,7 @@
 .itemCardContainer {
   position: relative;
 }
+
 .itemCardImg {
   width: 15em;
 }
@@ -11,18 +12,28 @@
   left: 3%;
   text-align: center;
 }
+
 .itemInfo-container > h1 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+}
+
+/* Apply text overflow handling */
+.itemDescription,
+.itemPrice {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%; /* Ensure the element has a defined width */
 }
 
 .itemDescription {
-  margin-bottom: 1rem;
   font-size: 1rem;
+  max-height: 4.5rem; /* Adjust based on your desired height for 3 lines */
 }
 
 .itemPrice {
-  margin-top: 2rem;
   font-size: 1.3rem;
   font-weight: 700;
 }
@@ -32,7 +43,6 @@
   display: block;
   margin-left: 3px;
   border: none;
-  margin-top: 0;
   width: 98.5%;
   height: 2.6rem;
   font-size: 1.5rem;
@@ -44,5 +54,21 @@
 }
 
 .addToCartBtn:hover {
-  background-color: #50ec4e;
+  filter: opacity(0.8);
+}
+
+.plate {
+  background-color: #f5773c;
+}
+
+.tshirt {
+  background-color: #ed0202;
+}
+
+.painting {
+  background-color: #15bc11;
+}
+
+.default {
+  background-color: #ed0202;
 }

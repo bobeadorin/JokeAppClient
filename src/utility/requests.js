@@ -117,3 +117,14 @@ export const logout = async () => {
     return false;
   }
 };
+
+//--------------------------------------shopRequests
+
+export const getAllItems = async (category) => {
+  try {
+    const res = await api.get(`/getItems/${category}`);
+    return res.data;
+  } catch (error) {
+    return [];
+  }
+};
