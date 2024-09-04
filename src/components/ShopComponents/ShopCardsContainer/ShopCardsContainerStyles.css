@@ -1,0 +1,20 @@
+.shopCardsContainer {
+  width: 70%;
+  background-color: rgb(253, 253, 253);
+}
+
+.cardsContainer-titleContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(90, 146, 255, 0.5);
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+
+  gap: 0.2rem;
+}
+
+.cardsContainer-titleContainer > h1 {
+  font-size: 2.3rem;
+}

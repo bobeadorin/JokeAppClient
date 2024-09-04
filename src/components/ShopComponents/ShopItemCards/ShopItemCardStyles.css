@@ -1,0 +1,48 @@
+.itemCardContainer {
+  position: relative;
+}
+.itemCardImg {
+  width: 15em;
+}
+
+.itemInfo-container {
+  position: absolute;
+  top: 55%;
+  left: 3%;
+  text-align: center;
+}
+.itemInfo-container > h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.itemDescription {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.itemPrice {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.addToCartBtn {
+  background-color: #15bc11;
+  display: block;
+  margin-left: 3px;
+  border: none;
+  margin-top: 0;
+  width: 98.5%;
+  height: 2.6rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  bottom: 5px;
+  cursor: pointer;
+}
+
+.addToCartBtn:hover {
+  background-color: #50ec4e;
+}
