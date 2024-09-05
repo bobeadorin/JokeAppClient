@@ -36,7 +36,7 @@ export default function ShopNavbar() {
           src="\shopHomePageImages\shopNavbarLogo\ShopCartLogo.png"
           className="navbarItems"
           alt=""
-          onClick={() => navigate("/shopCart")}
+          onClick={() => navigate("/shop/shopCart")}
         />
         <div className="profileLogoContainer">
           {isLoggedIn ? (

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export default class UtilityValidate {
   #containsUpperCase = (word) => {
     for (let char = 0; char < word.length; char++) {

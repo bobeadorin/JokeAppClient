@@ -1,0 +1,83 @@
+.paymentInfo-container {
+  background-color: #f1f1f2;
+  width: 20%;
+  height: 85%;
+  margin-top: 1.5rem;
+  margin-left: 8rem;
+  padding: 0rem 3rem 3rem 3rem;
+  border-radius: 30px;
+}
+
+.pickPayment-first {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.creditCardLogo {
+  width: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.paymentInfo-title {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pickPayment-second {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.paymentMethod-title {
+  margin-bottom: 0.5rem;
+}
+.nameP {
+  margin-bottom: 0.4rem;
+}
+
+.nameInput {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.expirationDateContainer {
+  display: flex;
+}
+.ExpirationDateTitle {
+  margin-bottom: 0.2rem;
+}
+
+.expirationDateContainer > input {
+  width: 4rem;
+  margin-right: 1rem;
+  border: none;
+}
+
+.cvvInput {
+  width: 3rem;
+  border: none;
+}
+
+.expirationAndCvvContainer {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.CheckOutBtn {
+  width: 90%;
+  height: 4rem;
+  margin-left: 1rem;
+  border: none;
+  background-color: #8c52ff;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: white;
+}

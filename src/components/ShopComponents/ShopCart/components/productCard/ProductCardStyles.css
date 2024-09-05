@@ -1,0 +1,60 @@
+.ProductCard-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.quantitySelectorProductCard {
+  display: flex;
+  align-items: center;
+}
+
+.quantitySelectorProductCard > button {
+  width: 1.5em;
+  height: 1.5rem;
+  background-color: #eeeeee;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.quantitySelectorProductCard > div {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productCardImg {
+  width: 5rem;
+  margin-left: 1rem;
+}
+
+.CardStats {
+  display: flex;
+  align-items: center;
+  width: 24%;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 47%;
+}
+
+.imgContainer > p {
+  font-size: 1.4rem;
+}
+
+.sizeStat {
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: 18%;
+}
+
+.priceStat {
+  font-weight: 700;
+}

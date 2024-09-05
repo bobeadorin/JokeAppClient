@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import "./ShopItemCardStyles.css";
-import { getImagePathByItemIdentifier } from "../../../utility/shopUtilityFunctions/getImagePathByItemIdentifier";
+import { useNavigate } from "react-router-dom";
 
 export default function ShopItemCard({ data }) {
-  console.log(data);
-  const path = data ? getImagePathByItemIdentifier(data.identifier) : "";
-  console.log(path);
-  // if (path === null) return <div>no</div>;
+  const path = `/shopHomePageImages/shopItemsCards/ShopCardDesigns/${data.identifier}.png`;
+  const navigate = useNavigate();
 
   return (
-    <div className="itemCardContainer">
+    <div
+      className="itemCardContainer"
+      onClick={() => navigate(`/shop/item/${data.identifier}`)}
+    >
       <img className="itemCardImg" src={path} alt="" />
       <div className="itemInfo-container">
         <h1>{data.title}</h1>

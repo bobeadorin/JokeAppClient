@@ -128,3 +128,25 @@ export const getAllItems = async (category) => {
     return [];
   }
 };
+
+export const getItemByIdentifier = async (id) => {
+  try {
+    const res = await api.get(`/getItemByIdentifier/${id}`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const addItemToCart = async (shopItem) => {
+  try {
+    const res = await api.post("/addToCart", shopItem, {
+      withCredentials: true,
+    });
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    throw err;
+  }
+};
